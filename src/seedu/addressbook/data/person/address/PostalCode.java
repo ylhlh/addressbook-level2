@@ -11,4 +11,11 @@ public class PostalCode {
     public String toString() {
         return value;
     }
+    
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof PostalCode // instanceof handles nulls
+                && this.value.equals(((PostalCode) other).value)); // state check
+    }
 }
