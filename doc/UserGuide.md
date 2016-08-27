@@ -44,7 +44,7 @@ Format: `add NAME [p]p/PHONE_NUMBER [p]e/EMAIL [p]a/ADDRESS [t/TAG]...`
 > 
 > Persons can have any number of tags (including 0)
 >
-> ADDRESS must be entered in the following format: a/BLOCK, STREET, UNIT, POSTAL_CODE
+> `ADDRESS` must be entered in the following format: `a/BLOCK, STREET, UNIT, POSTAL_CODE`
 
 Examples: 
 * `add John Doe p/98765432 e/johnd@gmail.com a/Block 123, street 71, #01-01, 666666`
