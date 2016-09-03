@@ -76,6 +76,23 @@ public class Name {
              return true;
          }
          
+         String[] thisNameSplit = thisName.split(" ");
+         String[] otherNameSplit = otherName.split(" ");
+         String thisNameSorted = "";
+         String otherNameSorted = "";
+         Arrays.sort(thisNameSplit);
+         Arrays.sort(otherNameSplit);
+         for (int i = 0; i < thisNameSplit.length; i++) {
+             thisNameSorted += thisNameSplit[i];
+         }
+         for (int i = 0; i < otherNameSplit.length; i++) {
+             otherNameSorted += otherNameSplit[i];
+         }
+         
+         if (thisNameSorted.equals(otherNameSorted)) {
+             return true;
+         }
+         
          return false;
      }
 
