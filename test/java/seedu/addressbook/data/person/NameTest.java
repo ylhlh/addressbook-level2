@@ -47,6 +47,10 @@ public class NameTest {
             name2 = new Name("John Smith");
             assertTrue(name1.isSimilar(name2));
             
+            // name1 is not subset of name2
+            name1 = new Name("John Bobby");
+            name2 = new Name("John Smith");
+            assertFalse(name1.isSimilar(name2));
             
         } catch (IllegalValueException e) {
             System.out.println("Should not reach here!");
