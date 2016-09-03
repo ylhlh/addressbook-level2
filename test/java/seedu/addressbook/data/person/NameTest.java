@@ -32,6 +32,11 @@ public class NameTest {
             name2 = new Name("Bobby");
             assertFalse(name1.isSimilar(name2));
             
+            // names are in different order
+            name1 = new Name("John Smith");
+            name2 = new Name("Smith John");
+            assertTrue(name1.isSimilar(name2));
+            
             
         } catch (IllegalValueException e) {
             System.out.println("Should not reach here!");
