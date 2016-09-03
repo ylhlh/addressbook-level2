@@ -63,7 +63,8 @@ public class Name {
     
     /**
      * Returns true if the other name is very similar to this name.
-     * Two names are considered similar if they are equal ignoring case,
+     * Two names are considered similar if they are equal ignoring case, 
+     * in different order, or if one name is a subset of the other name
      *  
      */
      public boolean isSimilar(Name other) { 
@@ -78,18 +79,18 @@ public class Name {
          
          String[] thisNameSplit = thisName.split(" ");
          String[] otherNameSplit = otherName.split(" ");
-         String thisNameSorted = "";
-         String otherNameSorted = "";
          Arrays.sort(thisNameSplit);
          Arrays.sort(otherNameSplit);
-         for (int i = 0; i < thisNameSplit.length; i++) {
-             thisNameSorted += thisNameSplit[i];
-         }
-         for (int i = 0; i < otherNameSplit.length; i++) {
-             otherNameSorted += otherNameSplit[i];
+
+         boolean oneNameIsSubsetOfTheOther = true;
+         int lengthOfNameWithLessWords = Math.min(thisNameSplit.length, otherNameSplit.length);
+         for (int i = 0; i < lengthOfNameWithLessWords; i++) {
+             if (!thisNameSplit[i].equals(otherNameSplit[i])) {
+                 oneNameIsSubsetOfTheOther = false;
+             }
          }
          
-         if (thisNameSorted.equals(otherNameSorted)) {
+         if (oneNameIsSubsetOfTheOther) {
              return true;
          }
          
