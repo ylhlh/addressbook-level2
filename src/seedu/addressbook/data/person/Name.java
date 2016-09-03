@@ -63,42 +63,39 @@ public class Name {
     
     /**
      * Returns true if the other name is very similar to this name.
-     * Two names are considered similar if they are equal ignoring case, 
-     * in different order, or if one name is a subset of the other name
-     *  
+     * Two names are considered similar if they are: (ignoring case)
+     * equal, in different order, or if one name is a subset of the other name.
+     * Note that the subset definition we use includes the former two cases as well.
      */
      public boolean isSimilar(Name other) { 
          if (other == null) {
              return false;
          }
-         
-         String thisName = this.fullName;
-         String otherName = other.fullName;
-         thisName = thisName.toLowerCase();
-         otherName = otherName.toLowerCase();
-         
-         if (thisName.equals(otherName)) {
-             return true;
-         }
-         
-         String[] thisNameSplit = thisName.split(" ");
-         String[] otherNameSplit = otherName.split(" ");
-         Arrays.sort(thisNameSplit);
-         Arrays.sort(otherNameSplit);
+         String thisNameIgnoreCase = this.fullName.toLowerCase();
+         String otherNameIgnoreCase = other.fullName.toLowerCase();
 
-         boolean oneNameIsSubsetOfTheOther = true;
-         int lengthOfNameWithLessWords = Math.min(thisNameSplit.length, otherNameSplit.length);
-         for (int i = 0; i < lengthOfNameWithLessWords; i++) {
-             if (!thisNameSplit[i].equals(otherNameSplit[i])) {
-                 oneNameIsSubsetOfTheOther = false;
-             }
-         }
-         
-         if (oneNameIsSubsetOfTheOther) {
-             return true;
-         }
-         
-         return false;
+         return isOneNameSubsetOfTheOther(thisNameIgnoreCase, otherNameIgnoreCase);
      }
+
+    /**
+     * Given two names, check if one name is subset of the other name.
+     * Subset definition also returns true if the names are equal, or in different order.
+     * @param thisNameIgnoreCase this name converted to lower case
+     * @param otherNameSplit other name converted to lower case
+     * @return true if one name is subset of the other, else false.
+     */
+    private boolean isOneNameSubsetOfTheOther(String thisNameIgnoreCase, String otherNameIgnoreCase) {
+        String[] thisNameSplit = thisNameIgnoreCase.split(" ");
+        String[] otherNameSplit = otherNameIgnoreCase.split(" ");
+        Arrays.sort(thisNameSplit);
+        Arrays.sort(otherNameSplit);
+        int lengthOfNameWithLessWords = Math.min(thisNameSplit.length, otherNameSplit.length);
+        for (int i = 0; i < lengthOfNameWithLessWords; i++) {
+            if (!thisNameSplit[i].equals(otherNameSplit[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }
