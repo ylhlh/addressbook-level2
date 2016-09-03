@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import seedu.addressbook.data.exception.IllegalValueException;
+
 public class NameTest {
     
     private Name name1;
@@ -12,10 +14,18 @@ public class NameTest {
     
     @Test
     public void testIsSimilar() {
-        // names are completely equal
-        name1 = new Name("Bob");
-        name2 = new Name("Bob");
-        assertTrue(name1.isSimilar(name2));
+        
+        try {
+            
+            // names are completely equal
+            name1 = new Name("Bob");
+            name2 = new Name("Bob");
+            assertTrue(name1.isSimilar(name2));
+            
+        } catch (IllegalValueException e) {
+            System.out.println("Should not reach here!");
+        }
+        
     }
 
 }
