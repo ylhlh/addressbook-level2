@@ -22,6 +22,12 @@ public class NameTest {
             name2 = new Name("Bob");
             assertTrue(name1.isSimilar(name2));
             
+            // names are equal when ignoring case
+            name1 = new Name("Bob");
+            name2 = new Name("bob");
+            assertTrue(name1.isSimilar(name2));
+
+            
         } catch (IllegalValueException e) {
             System.out.println("Should not reach here!");
         }
