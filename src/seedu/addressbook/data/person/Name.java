@@ -63,7 +63,8 @@ public class Name {
     
     /**
      * Returns true if the other name is very similar to this name.
-     * Two names are considered similar if they are equal, 
+     * Two names are considered similar if they are equal ignoring case,
+     *  
      */
      public boolean isSimilar(Name other) { 
          return true;
