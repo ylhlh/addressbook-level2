@@ -52,6 +52,11 @@ public class NameTest {
             name2 = new Name("John Smith");
             assertFalse(name1.isSimilar(name2));
             
+            // name1 is superset of name2
+            name1 = new Name("John Kill");
+            name2 = new Name("John");
+            assertTrue(name1.isSimilar(name2));
+            
         } catch (IllegalValueException e) {
             System.out.println("Should not reach here!");
         }
