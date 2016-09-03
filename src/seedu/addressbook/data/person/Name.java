@@ -80,8 +80,8 @@ public class Name {
     /**
      * Given two names, check if one name is subset of the other name.
      * Subset definition also returns true if the names are equal, or in different order.
-     * @param thisNameIgnoreCase this name converted to lower case
-     * @param otherNameSplit other name converted to lower case
+     * @param thisNameIgnoreCase this name in same case as other name
+     * @param otherNameIgnoreCase other name in same case as this name
      * @return true if one name is subset of the other, else false.
      */
     private boolean isOneNameSubsetOfTheOther(String thisNameIgnoreCase, String otherNameIgnoreCase) {
