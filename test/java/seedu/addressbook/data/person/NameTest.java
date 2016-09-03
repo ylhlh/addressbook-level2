@@ -57,6 +57,10 @@ public class NameTest {
             name2 = new Name("John");
             assertTrue(name1.isSimilar(name2));
             
+            // name2 is null
+            name1 = new Name("Doesnt matter");
+            assertFalse(name1.isSimilar(null));
+            
         } catch (IllegalValueException e) {
             System.out.println("Should not reach here!");
         }
